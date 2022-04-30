@@ -24,10 +24,10 @@ should harvest and create logs as well as files.  I think I have the main batch 
 This is what you need to manually lay out<p>
 <p>
 base_dir as defined in line 16 of populate_db_v2.py<p>
-/base_dir/reddit<p>
-/base_dir/reddit/bdfr<p>
-/base_dir/reddit/bdfr/logs<p>
-/base_dir/reddit/bdfr/excs<p>
+/base_dir/reddit/<p>
+/base_dir/reddit/bdfr/<p>
+/base_dir/reddit/bdfr/logs/<p>
+/base_dir/reddit/bdfr/excs/<p>
 And copy...<p>
 /base_dir/reddit/0000doit.bat<p>
 and create<p>
