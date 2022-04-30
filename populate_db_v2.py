@@ -3,7 +3,7 @@
 #
 #
 
-version = "4.29.20.50"
+version = "4.30.11.56"
 
 from pathlib import Path # needed for all file manipulations
 from datetime import datetime # needed for making logs unique
@@ -27,12 +27,12 @@ print("\n\n\nPopulating database and nuking dupes")
 print("Version   : %s" % (version))
 
 # If there is a db file load it
-path = Path(disk_db_name)
-if path.is_file():
-	print("Loading   : %s" % (disk_db_name))
-	source = sqlite3.connect(disk_db_name)
-	con = sqlite3.connect(':memory:')
-	source.backup(con)
+#path = Path(disk_db_name)
+#if path.is_file():
+#	print("Loading   : %s" % (disk_db_name))
+#	source = sqlite3.connect(disk_db_name)
+#	con = sqlite3.connect(':memory:')
+#	source.backup(con)
 
 con = sqlite3.connect(':memory:')
 cur = con.cursor()
