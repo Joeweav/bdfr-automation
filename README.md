@@ -10,7 +10,7 @@ The grabbing batch file also calls ffmpeg, you can sklip this if you want.  I ma
 every sub that I grab.  These are done after the grabbing so if you sort by date it will be the first thing and if you sort by name it will be the first thing.  If you  use the MS slide show/video player This guarentees you that the directory will start with an image.  If it starts with a video, it will call up the default video player app which is not good for quickly running through the stuff.  The MS app will play videos if if runs into them in the directory as long as you initally start it with an image.
 
 You also need the bulk video downloader for reddit, that does all theh heavy lifting as far as grabbig stuff.  Leave the defaiults alone for now..  Get that here:
-https://github.com/aliparlakci/bulk-downloader-for-reddit
+https://github.com/aliparlakci/bulk-downloader-for-reddit  This has to be installed!  And find a copy of ffmpeg for your platform and inistall it.
 
 This system depends on a directory structure, and all of it is UNC safe.  For the media you are grabbing you want a subdir called reddit.  
 When you run the downloader, it will make a sub dir for each sub you have in the list of stuff to get.  You have one special sub, caleld bdfr, 
@@ -19,15 +19,21 @@ and this has the ID's of files for BDFR not to get, ie stuff you already have.
 
 In the root of the of reddit place the 0000doit.bat file, this kicks the BDFR process off.  You also need to create a file called subreddit.lst, 
 this holds the list of subs you want to harvest, one per line.  Get this going.  Note nothing will wind up in the execs subdir yet, but the system 
-should harvest and create logs as well as files.  I think I have the main batch file set up to nuke text and gif images, you may wanna delete those lines..
+should harvest and create logs as well as files.  I think I have the main batch file set up to nuke text and gif images, you may wanna delete those lines.. 
 
-                  +- 000doit.bat
-                  __ subreddit.lst             _ /logs
-                  |                           |
-base_dir / reddit +--/bdfr-------------------+
-                                              |
-                                              | - /excs
-   This is what you need to manually lay out
+This is what you need to manually lay out
+
+base_dir as defined in line 16 of populate_db_v2.py
+/base_dir/reddit
+/base_dir/reddit/bdfr
+/base_dir/reddit/bdfr/logs
+/base_dir/reddit/bdfr/excs
+And copy...
+/base_dir/reddit/0000doit.bat
+and create
+/base_dir/reddit/subreddit.lst
+
+The sub folders will auto create when you run the batch file to kick bdfr over
 
 Before you have this harvest too many times or get too much stuff, you want to run the populatebb_v2.py program.  It will try and load up a sqlite db if it exists,
 if not, it will create one.  It breaks out file names, sizes and id's of the files.  Each time it finds a file it checks to see if a file of the same zize is in the db.  If not, it adds it to the db, if there is a similarly sized file, it computes the md5 of both files, and if they are not the same, commits the md 5 of the old file to the db, and commits all of the new file info to the database and mover on.  If the md5's match, it updates the existing file if it's md5 wa snot in the db and 
