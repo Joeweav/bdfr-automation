@@ -35,11 +35,10 @@ and create<p>
 <p>
 The sub folders will auto create when you run the batch file to kick bdfr over
 <p>
-Before you have this harvest too many times or get too much stuff, you want to run the populatebb_v2.py program.  It will try and load up a sqlite db if it exists,
-if not, it will create one.  It breaks out file names, sizes and id's of the files.  Each time it finds a file it checks to see if a file of the same zize is in the db.  If not, it adds it to the db, if there is a similarly sized file, it computes the md5 of both files, and if they are not the same, commits the md 5 of the old file to the db, and commits all of the new file info to the database and mover on.  If the md5's match, it updates the existing file if it's md5 wa snot in the db and 
+Before you have this harvest too many times or get too much stuff, you want to run the populatebb_v2.py program.  The front end breaks out file names, sizes and id's of the files.  Each time it finds a file it checks to see if a file of the same size is in the db.  If not, it adds it to the db, if there is a similarly sized file, it computes the md5 of both files, and if they are not the same, commits the md 5 of the old file to the db, and commits all of the new file info to the database and mover on.  If the md5's match, it updates the existing file if it's md5 wa snot in the db and 
 deletes the dupe, and logs it to a text file.  It only computes md5's when there is a file size match.
 <p>
-It also uses an in mempry db, but saves it every 10K transactions.  It will log that to the console.  It also logs when it moves to a new sub, and what it is depeating and why.  There is a small zize limit, I have it set for 1K, you can tweak it.  Most of the tiny files are just slides saying the file went by by..  Any file that starts with ! like the ones we make are skipped.  The populate db takes one command line argument:  THe group in the list to start on.  
+It also uses an in mempry db, but saves it every 10K transactions for forensic poking.  It will log that to the console.  It also logs when it moves to a new sub, and what it is depeating and why.  There is a small zize limit, I have it set for 1K, you can tweak it.  Most of the tiny files are just slides saying the file went by by..  Any file that starts with ! like the ones we make are skipped.  The populate db takes one command line argument:  THe group in the list to start on.  
 <p>
 I am still toying with how to trap errors.  I get occasional network errors and I am not sure if I should just hammer on retrying or wait for a few secs and retry etc. <p> 
 So for now it does nothing, it will barf.  However with the db auto loading and saving, and the command line argiment you can just start it back up in the sub it
