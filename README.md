@@ -1,6 +1,8 @@
 # bdfr-automation
 Scripts that I use with BDFR
 <p>
+<h1><center>Alpha Software - Use at your own peril</center></h1>
+<p>
 These should help you automate grabbig stuff from reddit every night and getting rid of dumps which seems to be a huge problem.
 I would sugguest that you follow my layout at first and get things working before branching off.
 <p>
